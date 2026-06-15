@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="LIAO Yudan" description="Personal page of LIAO Yudan (Reese).">
+  <section class="container hero">
+
+    <div class="hero-top">
+      <div class="hero-content">
+        <div class="hero-name-block">
+          <h1 class="hero-name">Reese Liao</h1>
+          <span class="hero-alias">LIAO Yudan</span>
+        </div>
+
+        <p class="hero-bio">
+          Applied Computing undergraduate at HSUHK working on edge AI,
+          on-device inference, and ML systems. Currently building hybrid
+          edge-cloud AI pipelines at Solos Technology.
+        </p>
+
+        <ul class="hero-links">
+          <li>
+            <a href="https://github.com/reeseliao" target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+          </li>
+          <li>
+            <a href="https://x.com/reeseintheloop" target="_blank" rel="noopener noreferrer">
+              X / Twitter
+            </a>
+          </li>
+          <li>
+            <a href="mailto:yudan33668@gmail.com">
+              Email
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Replace /avatar.svg with /avatar.jpg (or .png) once you have a real photo -->
+      <img src="/avatar.svg" alt="LIAO Yudan" class="hero-avatar" />
+    </div>
+
+    <div class="skills-divider"></div>
+
+    <div class="skills">
+      <p class="section-header">Skills</p>
+      <dl class="skill-groups">
+        <div class="skill-group">
+          <dt>Languages</dt>
+          <dd>
+            <span class="tag">Python</span>
+            <span class="tag">C++</span>
+            <span class="tag">Java</span>
+            <span class="tag">SQL</span>
+          </dd>
+        </div>
+        <div class="skill-group">
+          <dt>Frameworks</dt>
+          <dd>
+            <span class="tag">PyTorch</span>
+            <span class="tag">OpenVINO</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Git</span>
+            <span class="tag">n8n</span>
+            <span class="tag">Streamlit</span>
+            <span class="tag">Ollama</span>
+          </dd>
+        </div>
+        <div class="skill-group">
+          <dt>Libraries</dt>
+          <dd>
+            <span class="tag">NumPy</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">Open3D</span>
+          </dd>
+        </div>
+        <div class="skill-group">
+          <dt>Spoken</dt>
+          <dd>
+            <span class="tag">English (IELTS 7.0)</span>
+            <span class="tag">Mandarin (PSC 2A)</span>
+            <span class="tag">Cantonese</span>
+          </dd>
+        </div>
+      </dl>
+    </div>
+
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .hero-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2.5rem;
+  }
+
+  .hero-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .hero-avatar {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid var(--color-border);
+  }
+
+  .hero-name-block {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name {
+    font-family: var(--font-mono);
+    font-size: 2.25rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--color-text);
+  }
+
+  .hero-alias {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-muted);
+  }
+
+  .hero-bio {
+    font-size: 1rem;
+    color: var(--color-muted);
+    max-width: 480px;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-links a {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-text);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease, color 0.15s ease;
+    padding-bottom: 1px;
+  }
+
+  .hero-links a:hover {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  .skills-divider {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 3rem 0;
+  }
+
+  .skills .section-header {
+    margin-bottom: 1.25rem;
+  }
+
+  .skill-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .skill-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .skill-group dt {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--color-muted);
+    min-width: 6rem;
+    padding-top: 0.2rem;
+    letter-spacing: 0.04em;
+  }
+
+  .skill-group dd {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    padding: 0.15rem 0.5rem;
+  }
+
+  @media (max-width: 520px) {
+    .hero-top {
+      flex-direction: column-reverse;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-name-block {
+      justify-content: center;
+    }
+
+    .hero-links {
+      justify-content: center;
+    }
+
+    .skill-group {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .skill-group dt {
+      min-width: unset;
+    }
+  }
+</style>

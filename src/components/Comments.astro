@@ -1,0 +1,85 @@
+---
+// Giscus comments — powered by GitHub Discussions.
+// Setup: go to https://giscus.app, pick your repo, copy the repo-id and category-id below.
+// Requirements before this works:
+//   1. The GitHub repo must be public
+//   2. The giscus app must be installed: https://github.com/apps/giscus
+//   3. GitHub Discussions must be enabled on the repo (Settings → Features → Discussions)
+---
+
+<div class="comments-wrap">
+  <div class="comments-divider"></div>
+  <p class="comments-label">Discussion</p>
+  <div class="giscus"></div>
+</div>
+
+<script is:inline>
+  function getGiscusTheme() {
+    return document.documentElement.dataset.theme === 'dark'
+      ? 'dark_dimmed'
+      : 'light';
+  }
+
+  function loadGiscus() {
+    const container = document.querySelector('.giscus');
+    if (!container) return;
+
+    const script = document.createElement('script');
+    script.src = 'https://giscus.app/client.js';
+    script.setAttribute('data-repo', 'reeseliao/reeseliao.github.io');
+    // TODO: replace these two values after running https://giscus.app
+    script.setAttribute('data-repo-id', 'REPLACE_WITH_REPO_ID');
+    script.setAttribute('data-category', 'Announcements');
+    script.setAttribute('data-category-id', 'REPLACE_WITH_CATEGORY_ID');
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-strict', '0');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-emit-metadata', '0');
+    script.setAttribute('data-input-position', 'top');
+    script.setAttribute('data-theme', getGiscusTheme());
+    script.setAttribute('data-lang', 'en');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.async = true;
+    container.appendChild(script);
+  }
+
+  // keep giscus in sync when the theme toggle fires
+  function syncGiscusTheme() {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    iframe.contentWindow.postMessage(
+      { giscus: { setConfig: { theme: getGiscusTheme() } } },
+      'https://giscus.app'
+    );
+  }
+
+  loadGiscus();
+
+  // watch for data-theme changes on <html>
+  new MutationObserver(syncGiscusTheme).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  });
+</script>
+
+<style>
+  .comments-wrap {
+    margin-top: 4rem;
+  }
+
+  .comments-divider {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin-bottom: 2rem;
+  }
+
+  .comments-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 1.5rem;
+  }
+</style>

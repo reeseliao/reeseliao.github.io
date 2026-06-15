@@ -1,0 +1,87 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  stack: string[];
+  href?: string;
+}
+
+const { title, description, stack, href } = Astro.props;
+---
+
+<article class="card">
+  <div class="card-body">
+    <h3 class="card-title">{title}</h3>
+    <p class="card-desc">{description}</p>
+  </div>
+  <div class="card-footer">
+    <ul class="stack-tags">
+      {stack.map((tag) => <li class="tag">{tag}</li>)}
+    </ul>
+    {href && (
+      <a href={href} class="card-link" target="_blank" rel="noopener noreferrer">
+        GitHub →
+      </a>
+    )}
+  </div>
+</article>
+
+<style>
+  .card {
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .card-title {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .card-desc {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .stack-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--color-muted);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    padding: 0.15rem 0.5rem;
+  }
+
+  .card-link {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-accent);
+    white-space: nowrap;
+  }
+
+  .card-link:hover {
+    text-decoration: underline;
+  }
+</style>

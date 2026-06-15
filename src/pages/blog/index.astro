@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<BaseLayout title="Blog — LIAO Yudan" description="Technical writing by LIAO Yudan.">
+  <div class="container">
+    <p class="section-header">Blog</p>
+
+    {posts.length === 0 ? (
+      <p class="empty">No posts yet.</p>
+    ) : (
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li class="post-item">
+            <a href={`/blog/${post.slug}`} class="post-link">
+              <span class="post-title">{post.data.title}</span>
+              <span class="post-date">{fmt(post.data.date)}</span>
+            </a>
+            {post.data.description && (
+              <p class="post-desc">{post.data.description}</p>
+            )}
+            {post.data.tags.length > 0 && (
+              <ul class="post-tags">
+                {post.data.tags.map((tag) => (
+                  <li class="tag">{tag}</li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .empty {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+  }
+
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .post-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .post-item:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .post-link {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-title {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--color-text);
+    transition: color 0.15s ease;
+  }
+
+  .post-link:hover .post-title {
+    color: var(--color-accent);
+  }
+
+  .post-date {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .post-desc {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    padding: 0.15rem 0.5rem;
+  }
+</style>

@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Comments from '../../components/Comments.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<BaseLayout title={`${post.data.title} — LIAO Yudan`} description={post.data.description}>
+  <article class="container post">
+    <header class="post-header">
+      <a href="/blog" class="back">← Blog</a>
+      <h1 class="post-title">{post.data.title}</h1>
+      <div class="post-meta">
+        <time datetime={post.data.date.toISOString()}>{fmt(post.data.date)}</time>
+        {post.data.tags.length > 0 && (
+          <ul class="post-tags">
+            {post.data.tags.map((tag) => <li class="tag">{tag}</li>)}
+          </ul>
+        )}
+      </div>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <Comments />
+  </article>
+</BaseLayout>
+
+<style>
+  .post {
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+  }
+
+  .back {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    display: inline-block;
+    margin-bottom: 2rem;
+    transition: color 0.15s ease;
+  }
+
+  .back:hover {
+    color: var(--color-accent);
+  }
+
+  .post-title {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.35;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  time {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-muted);
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    padding: 0.15rem 0.5rem;
+  }
+
+  /* prose styles */
+  .prose {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: var(--color-text);
+  }
+
+  .prose :global(h2) {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 2.5rem 0 0.75rem;
+    color: var(--color-text);
+  }
+
+  .prose :global(h3) {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin: 2rem 0 0.5rem;
+    color: var(--color-text);
+  }
+
+  .prose :global(p) {
+    margin-bottom: 1.25rem;
+  }
+
+  .prose :global(a) {
+    color: var(--color-accent);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease;
+  }
+
+  .prose :global(a:hover) {
+    border-bottom-color: var(--color-accent);
+  }
+
+  .prose :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    background: var(--color-border);
+    padding: 0.1em 0.35em;
+    border-radius: 2px;
+  }
+
+  .prose :global(pre) {
+    background: var(--color-border);
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  .prose :global(pre code) {
+    background: none;
+    padding: 0;
+    font-size: 0.85rem;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .prose :global(ul) {
+    list-style: disc;
+  }
+
+  .prose :global(ol) {
+    list-style: decimal;
+  }
+
+  .prose :global(li) {
+    margin-bottom: 0.35rem;
+  }
+
+  .prose :global(blockquote) {
+    border-left: 2px solid var(--color-accent);
+    padding-left: 1rem;
+    color: var(--color-muted);
+    margin: 1.5rem 0;
+  }
+
+  .prose :global(hr) {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 2.5rem 0;
+  }
+</style>

@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ExperienceItem from '../components/ExperienceItem.astro';
+
+const experience = [
+  {
+    role: 'Software Engineering Intern',
+    org: 'Solos Technology · Hong Kong Science Park',
+    period: 'Jun 2026 – Aug 2026',
+    bullets: [
+      'Integrated PaddleOCR V5 into an n8n-based business card reader pipeline; implemented async polling, anti-hallucination prompt engineering, and JSON output cleanup for downstream agent processing.',
+      'Designed and shipped automatic session-splitting for the datalog analysis pipeline (mV-based charging detection), enabling multi-session CSVs from internal QA tooling to be analysed correctly.',
+      'Ongoing: hybrid edge-cloud AI safety agent for fall detection using on-device Gemma 3n and cloud VLM confirmation — internal hackathon project.',
+    ],
+  },
+  {
+    role: 'Independent Contributor',
+    org: 'Intel OpenVINO Toolkit',
+    period: 'Feb 2026 – Present',
+    bullets: [
+      'Engineered and submitted upstream PRs to the PyTorch frontend (e.g., PR #34577: fake_quantize operator implementation) for Quantization-Aware Training support in OpenVINO.',
+      'Diagnosed low-level performance bottlenecks in the asynchronous execution pipeline, focusing on hardware-specific routing for edge inference targets.',
+    ],
+  },
+  {
+    role: 'Research Assistant — 3D Point Cloud Optimization',
+    org: 'Autonomous Driving Perception Lab',
+    period: 'Mar 2025 – Sep 2025',
+    bullets: [
+      'Investigated point cloud transmission and compression strategies for autonomous driving perception pipelines.',
+      'Extended PointNet++ with a binary segmentation head for foreground/background classification; trained and evaluated on KITTI and V2X datasets.',
+    ],
+  },
+];
+---
+
+<BaseLayout title="Experience — LIAO Yudan" description="Experience of LIAO Yudan.">
+  <div class="container">
+    <p class="section-header">Experience</p>
+    <div class="timeline">
+      {experience.map((e) => (
+        <ExperienceItem
+          role={e.role}
+          org={e.org}
+          period={e.period}
+          bullets={e.bullets}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .timeline {
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 0.35rem;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-border);
+  }
+</style>

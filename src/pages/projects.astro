@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = [
+  {
+    title: 'Aura: Closed-Loop AIoT Inference System',
+    description:
+      'Edge-to-cloud pipeline bridging cloud LLMs (Gemini / OpenRouter) with local IoT hardware for real-time, sentiment-driven physical actuation. Reverse-engineered proprietary BLE/GATT protocols, decoding hexadecimal byte arrays to map LLM intent to precise motor frequency commands. Extended with a haptic meditation module delivering programmable breathing patterns (e.g., 4-7-8 cycle) via vibration motor, synchronized with streaming audio cues.',
+    stack: ['Python', 'HTML/CSS', 'Reverse Engineering', 'BLE · GATT', 'LLM APIs', 'Edge Inference', 'Haptic Feedback'],
+    href: 'https://github.com/reeseliao',
+  },
+  {
+    title: 'Local Multimodal Semantic Video Search',
+    description:
+      'Zero-API local RAG pipeline using OpenCV for frame extraction and LLaVA for semantic captioning, with cross-lingual query routing via Gemma 2 and Nomic embeddings. Profiled Python GIL bottlenecks (10:1 compute ratio) and prototyped a native C++ ingestion layer via OpenVINO, achieving 2.8× throughput at 4× sampling density over the Python baseline.',
+    stack: ['Python', 'C++', 'OpenVINO', 'OpenCV', 'LLaVA', 'Ollama'],
+    href: 'https://github.com/reeseliao',
+  },
+  {
+    title: 'Kaggle: Drawing with LLMs',
+    description:
+      'Bronze Medal — ranked 103rd / 1,309 globally (top 8%). Designed prompt-engineering pipelines that guide frozen LLMs to generate precise, executable Python for complex image reconstruction tasks.',
+    stack: ['Python', 'Prompt Engineering', 'LLMs'],
+  },
+];
+---
+
+<BaseLayout title="Projects — LIAO Yudan" description="Projects by LIAO Yudan.">
+  <div class="container">
+    <p class="section-header">Projects</p>
+    <div class="grid">
+      {projects.map((p) => (
+        <ProjectCard
+          title={p.title}
+          description={p.description}
+          stack={p.stack}
+          href={p.href}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* last card spans full row when count is odd */
+  .grid > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: 600px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    .grid > :last-child:nth-child(odd) {
+      grid-column: unset;
+    }
+  }
+</style>

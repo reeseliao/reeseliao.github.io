@@ -1,0 +1,102 @@
+---
+interface Props {
+  role: string;
+  org: string;
+  period: string;
+  bullets: string[];
+}
+
+const { role, org, period, bullets } = Astro.props;
+---
+
+<div class="entry">
+  <div class="entry-marker"></div>
+  <div class="entry-body">
+    <div class="entry-header">
+      <span class="entry-role">{role}</span>
+      <span class="entry-period">{period}</span>
+    </div>
+    <span class="entry-org">{org}</span>
+    <ul class="entry-bullets">
+      {bullets.map((b) => <li>{b}</li>)}
+    </ul>
+  </div>
+</div>
+
+<style>
+  .entry {
+    display: grid;
+    grid-template-columns: 1rem 1fr;
+    gap: 0 1.25rem;
+    position: relative;
+  }
+
+  .entry-marker {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-border);
+    border: 2px solid var(--color-accent);
+    margin-top: 0.35rem;
+    flex-shrink: 0;
+  }
+
+  .entry-body {
+    padding-bottom: 2.5rem;
+  }
+
+  .entry:last-child .entry-body {
+    padding-bottom: 0;
+  }
+
+  .entry-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.2rem;
+  }
+
+  .entry-role {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .entry-period {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    white-space: nowrap;
+  }
+
+  .entry-org {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .entry-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .entry-bullets li {
+    font-size: 0.875rem;
+    color: var(--color-text);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .entry-bullets li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--color-muted);
+  }
+</style>
