@@ -148,9 +148,9 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"openvino-fake-quantize.md": {
-	id: "openvino-fake-quantize.md";
-  slug: "openvino-fake-quantize";
+"openvino-fake-quantize-blog.md": {
+	id: "openvino-fake-quantize-blog.md";
+  slug: "openvino-fake-quantize-blog";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
