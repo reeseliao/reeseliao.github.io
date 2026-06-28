@@ -17,6 +17,12 @@ const projects = [
     href: 'https://github.com/reeseliao/Multimodal_Video_Search',
   },
   {
+    title: 'Guardian: Hybrid AI Safety Agent for Fall Detection',
+    description:
+      'Won highest score in Solos Technology internal hackathon. Autonomous 4-layer fall detection system for smart glasses: IMU impact detection triggers VLM-based visual confirmation (first-person camera), followed by a 30-second recovery cancel window. On timeout, an automated alert with GPS location is sent to emergency contacts. BLE disconnection during a fall event is treated as severity confirmation. Built a lock-free ring buffer for continuous pre-fall frame capture, enabling reliable photo evidence even when the device is face-down after impact.',
+    stack: ['Kotlin', 'Gemini VLM', 'n8n', 'BLE', 'Android', 'Edge AI', 'Solos V2 SDK'],
+  },
+  {
     title: 'Kaggle: Drawing with LLMs',
     description:
       'Bronze Medal — ranked 103rd / 1,309 globally (top 8%). Designed prompt-engineering pipelines that guide frozen LLMs to generate precise, executable Python for complex image reconstruction tasks.',
