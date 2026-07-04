@@ -1,13 +1,13 @@
 ---
 title: "Beyond the IMU: Designing a Fault-Tolerant Fall Detection System for Smart Glasses"
 date: 2026-06-26
-description: How I built Guardian — an end-to-end fall detection pipeline for Solos smart glasses combining IMU state machines, a lock-free ring buffer, VLM visual confirmation, and a three-tier photo fallback designed around a BLE bandwidth collision.
+description: How I built an end-to-end fall detection pipeline for Solos smart glasses combining IMU state machines, a lock-free ring buffer, VLM visual confirmation, and a three-tier photo fallback designed around a BLE bandwidth collision.
 tags: [Edge AI, Android, BLE, VLM, Systems Design, Kotlin]
 ---
 
 ## TL;DR
 
-Over two weeks of after-hours development, I built an end-to-end fall detection system for Solos smart glasses: IMU-based impact detection, a 30-second cancel window, VLM-based visual confirmation via Gemini, and automated alerting through n8n. The most interesting engineering problem wasn't the AI — it was a BLE bandwidth collision between sensor streaming and photo capture, which forced a redesign around a lock-free ring buffer. The system won highest score at Solos' internal hackathon.
+Over two weeks of after-hours development, I built an end-to-end fall detection system for Solos smart glasses: IMU-based impact detection, a 30-second cancel window, VLM-based visual confirmation via Gemini, and automated alerting through n8n. The most interesting engineering problem wasn't the AI — it was a BLE bandwidth collision between sensor streaming and photo capture, which forced a redesign around a lock-free ring buffer. The system won highest score at the internal hackathon.
 
 ## The Problem
 
