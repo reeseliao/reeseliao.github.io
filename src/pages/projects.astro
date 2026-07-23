@@ -4,10 +4,10 @@ import ProjectCard from '../components/ProjectCard.astro';
 
 const projects = [
   {
-    title: 'Aura: Closed-Loop AIoT Inference System',
+    title: 'Aura: Closed-Loop AIoT Hardware & Inference System',
     description:
-      'Edge-to-cloud pipeline bridging cloud LLMs (Gemini / OpenRouter) with local IoT hardware for real-time, sentiment-driven physical actuation. Reverse-engineered proprietary BLE/GATT protocols, decoding hexadecimal byte arrays to map LLM intent to precise motor frequency commands. Extended with a haptic meditation module delivering programmable breathing patterns (e.g., 4-7-8 cycle) via vibration motor, synchronized with streaming audio cues.',
-    stack: ['Python', 'HTML/CSS', 'Reverse Engineering', 'BLE · GATT', 'LLM APIs', 'Edge Inference', 'Haptic Feedback'],
+      'Edge-to-cloud pipeline bridging cloud LLMs with local IoT hardware for real-time, sentiment-driven physical actuation: inline control tags are parsed mid-stream from raw SSE responses to drive motor commands as the model streams. Reverse-engineered the proprietary BLE protocol by hand-parsing raw Bluetooth HCI captures (btsnoop → ACL → L2CAP → ATT framing) without any BLE libraries, using statistical differential analysis and checksum hypothesis testing to map unknown encrypted hex payloads to precise motor frequencies. Fronted by a cost-aware LLM gateway on Cloudflare Workers with zero-buffer SSE passthrough, cutting gateway-added latency by ~92% (399ms → 30ms). Extended with a haptic meditation module delivering programmable breathing patterns (e.g., 4-7-8 cycle) via vibration motor, synchronized with streaming audio cues. Currently in closed beta.',
+    stack: ['Python', 'HTML/CSS', 'Cloudflare Workers', 'Bluetooth HCI · L2CAP · ATT', 'SSE Streaming', 'LLM APIs', 'Edge Inference', 'Haptic Feedback'],
   },
   {
     title: 'Local Multimodal Semantic Video Search',
