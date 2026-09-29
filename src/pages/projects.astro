@@ -10,17 +10,17 @@ const projects = [
     stack: ['Python', 'HTML/CSS', 'Cloudflare Workers', 'Bluetooth HCI · L2CAP · ATT', 'SSE Streaming', 'LLM APIs', 'Edge Inference', 'Haptic Feedback'],
   },
   {
+    title: 'Hybrid AI Safety Agent for Fall Detection',
+    description:
+      'Won highest score in Solos Technology internal hackathon. Autonomous 4-layer fall detection system for smart glasses: IMU impact detection triggers VLM-based visual confirmation (first-person camera), followed by a 30-second recovery cancel window. On timeout, an automated alert with GPS location is sent to emergency contacts. BLE disconnection during a fall event is treated as severity confirmation. Built a lock-free ring buffer for continuous pre-fall frame capture, enabling reliable photo evidence even when the device is face-down after impact.',
+    stack: ['Kotlin', 'Gemini VLM', 'n8n', 'BLE', 'Android', 'Edge AI', 'Solos V2 SDK'],
+  },
+  {
     title: 'Local Multimodal Semantic Video Search',
     description:
       'Zero-API local RAG pipeline using OpenCV for frame extraction and LLaVA for semantic captioning, with cross-lingual query routing via Gemma 2 and Nomic embeddings. Profiled Python GIL bottlenecks (10:1 compute ratio) and prototyped a native C++ ingestion layer via OpenVINO, achieving 2.8× throughput at 4× sampling density over the Python baseline.',
     stack: ['Python', 'C++', 'OpenVINO', 'OpenCV', 'LLaVA', 'Ollama'],
     href: 'https://github.com/reeseliao/Multimodal_Video_Search',
-  },
-  {
-    title: 'Hybrid AI Safety Agent for Fall Detection',
-    description:
-      'Won highest score in Solos Technology internal hackathon. Autonomous 4-layer fall detection system for smart glasses: IMU impact detection triggers VLM-based visual confirmation (first-person camera), followed by a 30-second recovery cancel window. On timeout, an automated alert with GPS location is sent to emergency contacts. BLE disconnection during a fall event is treated as severity confirmation. Built a lock-free ring buffer for continuous pre-fall frame capture, enabling reliable photo evidence even when the device is face-down after impact.',
-    stack: ['Kotlin', 'Gemini VLM', 'n8n', 'BLE', 'Android', 'Edge AI', 'Solos V2 SDK'],
   },
   {
     title: 'Kaggle: Drawing with LLMs',
