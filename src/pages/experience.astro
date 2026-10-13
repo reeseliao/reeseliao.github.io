@@ -15,11 +15,11 @@ const experience = [
     ],
   },
   {
-    role: 'Independent Contributor',
+    role: 'Open-Source Contributor',
     org: 'Intel OpenVINO Toolkit',
     period: 'Feb 2026 – Present',
     bullets: [
-      'Engineered and submitted upstream PRs to the PyTorch frontend (e.g., PR #34577: fake_quantize operator implementation) for Quantization-Aware Training support in OpenVINO.',
+      'Landed upstream PR #34577 (merged Oct 2026) in the OpenVINO PyTorch frontend, adding conversion support for aten::_fake_quantize_learnable_per_channel_affine across the TorchScript and FX / torch.export paths — unblocking QAT models with learnable quantization parameters (resolves issue #29682).',
       'Diagnosed low-level performance bottlenecks in the asynchronous execution pipeline, focusing on hardware-specific routing for edge inference targets.',
     ],
   },
