@@ -5,7 +5,7 @@ description: How I contributed PR #34577 to OpenVINO (merged Oct 2026) — addin
 tags: [OpenVINO, PyTorch, Quantization, Edge Inference, Open Source]
 ---
 
-> **Update (Oct 13, 2026):** This PR has been merged into OpenVINO master (commit [`10864ee`](https://github.com/openvinotoolkit/openvino/commit/10864ee713c0c1d4f967506bd88eb359b86a5b4a), resolves [#29682](https://github.com/openvinotoolkit/openvino/issues/29682)). The sections below have been revised to match the final merged implementation.
+> **Update (Oct 13, 2026):** This PR has been merged into OpenVINO master (commit [`10864ee`](https://github.com/openvinotoolkit/openvino/commit/10864ee713c0c1d4f967506bd88eb359b86a5b4a), resolves [#29682](https://github.com/openvinotoolkit/openvino/issues/29682)). 
 
 ## TL;DR
 
