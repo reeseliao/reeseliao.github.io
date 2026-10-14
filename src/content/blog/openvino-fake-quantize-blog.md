@@ -1,7 +1,7 @@
 ---
 title: "Implementing fake_quantize in OpenVINO's PyTorch Frontend"
 date: 2026-05-14
-description: How I contributed PR #34577 to OpenVINO (merged Oct 2026) — adding support for the learnable per-channel fake quantize op so QAT-trained models can be converted to OpenVINO IR without import failures.
+description: "How I contributed PR #34577 to OpenVINO (merged Oct 2026) – adding support for the learnable per-channel fake quantize op so QAT-trained models can be converted to OpenVINO IR without import failures."
 tags: [OpenVINO, PyTorch, Quantization, Edge Inference, Open Source]
 ---
 
