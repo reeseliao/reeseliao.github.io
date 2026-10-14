@@ -66,15 +66,14 @@ I added `TestFakeQuantizeLearnablePerChannelAffine` in `tests/layer_tests/pytorc
 
 The tests run in precommit for the TorchScript, `torch.export` and FX backend paths. Layer tests are the standard approach in OpenVINO's test suite for op-level validation — they isolate the translator logic from any model-level complexity.
 
-## What I Learned
+## Takeaways
 
 **Frontends are translators.** OpenVINO's PyTorch frontend doesn't "understand" PyTorch models in any deep sense. It pattern-matches op signatures and emits equivalent IR nodes. The interesting engineering is in the edge cases: parameters that exist in one framework but not the other, broadcasting semantics that differ subtly, and knowing which training-only artifacts can be safely dropped.
 
 **Read the reference implementation, not just the signature.** The op signature only hints that `zero_point` is a float; the actual semantics — round half-to-even, then clamp — live in PyTorch's `_get_rounded_zero_point`. Matching the signature gets you a converter that compiles; matching the reference gets you one that's numerically correct.
 
-**Learnable quantization is clever.** Making the quantization grid itself trainable is a simple idea with significant impact — it lets the model adapt to its own weight distribution rather than relying on static calibration. This is especially useful for models with outlier weights that would otherwise lose precision under a fixed quantization scheme.
-
-**Contributing to a large C++ codebase is humbling.** The OpenVINO repo is massive, and finding where things live (the right `.cpp` file, the two registration tables, the conformance docs, the right test directory) took more time than writing the actual translation logic. But once you understand the pattern — translator function + registry entries + layer test — adding new ops becomes mechanical.
+**Navigating a large C++ codebase is pattern recognition.** 
+The OpenVINO repo is massive, and finding where things live (the right `.cpp` file, the two registration tables, the conformance docs, the right test directory) took more time than writing the actual translation logic. But once you understand the pattern — translator function + registry entries + layer test — adding new ops becomes mechanical.
 
 ---
 
