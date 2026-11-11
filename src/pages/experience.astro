@@ -4,6 +4,16 @@ import ExperienceItem from '../components/ExperienceItem.astro';
 
 const experience = [
   {
+    role: 'Open-Source Contributor',
+    org: 'SGLang',
+    period: 'Nov 2026 – Present',
+    bullets: [
+      'Submitted upstream PR #49580 (under review) to the SGLang scheduler, fixing pause_generation(mode="abort") returning before the engine was idle — which caused the release_memory_occupation call that RL training loops make right after it to be refused.',
+      'Traced the root cause to a running request aborted by a client disconnect, which frees its KV cache only at its next step; made abort mode pause and retract the scheduler, ordered ahead of abort_all on the same channel across the tokenizer manager and multi-tokenizer router.',
+      'Added unit tests on both the scheduler side (engine fully idle after pause + abort) and the tokenizer side (pause dispatched before abort_all), and updated the RL integration docs to state the new contract.',
+    ],
+  },
+  {
     role: 'Software Engineering Intern',
     org: 'Solos Technology · Hong Kong Science Park',
     period: 'May 2026 – Aug 2026',
